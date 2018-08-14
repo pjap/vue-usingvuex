@@ -9,12 +9,13 @@
 import { mapGetters } from 'vuex'
 
 export default {
-  // computed: {
-  //   ...mapGetters([
-  //     'doubleCounter',
-  //     'stringCounter'
-  //   ])
-  // }
+  // To Mix Computed Getter and Another Computed Property
+  computed: {
+    ...mapGetters([
+      'doubleCounter',
+      'stringCounter'
+    ])
+  }
 
   // Using Object
   // computed: mapGetters({
