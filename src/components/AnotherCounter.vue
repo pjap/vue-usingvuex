@@ -1,20 +1,28 @@
 <template>
   <div>
-    <button class="btn btn-success" @click="increment">Increase</button>
-    <button class="btn btn-warning" @click="decrement">Decrease</button>
+    <button class="btn btn-success" @click="asyncIncrement({ by: 50, duration: 500 })">Increase</button>
+    <button class="btn btn-warning" @click="asyncDecrement({ by: 50, duration: 500 })">Decrease</button>
   </div>
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
+// import { mapMutations } from 'vuex'
+import { mapActions } from 'vuex'
 
 export default {
   methods: {
-    ...mapMutations([
-        'increment',
-        'decrement'
+    ...mapActions([
+        'asyncIncrement',
+        'asyncDecrement'
     ])
   }
+
+  // Double Use Mutation
+  // methods: {
+  //   ...mapMutations([
+  //       'increment',
+  //       'decrement'
+  //   ])
 
   // Single Use Mutations
   // methods: {

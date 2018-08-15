@@ -9,6 +9,11 @@
         <appCounter></appCounter>
         <br><br>
         <appAnotherCounter></appAnotherCounter>
+        <hr>
+        <!-- <input type="text" :value="value" @input="updateValue"> -->
+        <input type="text" v-model="value">
+        <br><br>
+        <p>{{ value }}</p>
       </div>
     </div>
   </div>
@@ -31,6 +36,23 @@ export default {
     appCounter: Counter,
     appAnotherResult: AnotherResult,
     appAnotherCounter: AnotherCounter
+  },
+  computed: {
+    value: {
+      // return this.$store.getters.value
+      get() {
+        return this.$store.getters.value
+      },
+      set(value) {
+        this.$store.dispatch('updateValue', value)
+      }
+    }
+  },
+  methods: {
+    updateValue(event) {
+      // If Single Use Dispacth for More Than One Use Map Actions
+      this.$store.dispatch('updateValue', event.target.value)
+    }
   }
 }
 </script>
